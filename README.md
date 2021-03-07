@@ -2,7 +2,7 @@
 
 # MS Graph React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This sample app shows how to use the Microsoft Graph API to access Outlook and OneDrive data in React, was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
