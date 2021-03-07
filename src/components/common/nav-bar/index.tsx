@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { NavLink as RouterNavLink } from 'react-router-dom';
 import {
   Collapse,
@@ -12,19 +12,15 @@ import {
 } from 'reactstrap';
 import AuthNavItem from '../auth-nav-item';
 import '@fortawesome/fontawesome-free/css/all.css';
-
-interface NavBarProps {
-  isAuthenticated: boolean;
-  authButtonMethod: any;
-  user: any;
-}
+import { AuthContext } from '../../../contexts/auth-context';
 
 interface NavBarState {
   isOpen: boolean;
 }
 
-export default function NavBar(props: NavBarProps) {
+export default function NavBar() {
   const [state, setState] = useState<NavBarState>({isOpen: false});
+  const {isAuthenticated} = useContext(AuthContext);
 
   const toggle = () => {
     setState({
@@ -34,7 +30,7 @@ export default function NavBar(props: NavBarProps) {
 
   // Only show calendar nav item if logged in
   let calendarLink = null;
-  if (props.isAuthenticated) {
+  if (isAuthenticated) {
     calendarLink = (
       <NavItem>
         <RouterNavLink to="/calendar" className="nav-link" exact>Calendar</RouterNavLink>
@@ -62,10 +58,7 @@ export default function NavBar(props: NavBarProps) {
                   Docs
                 </NavLink>
               </NavItem>
-              <AuthNavItem
-                isAuthenticated={props.isAuthenticated}
-                authButtonMethod={props.authButtonMethod}
-                user={props.user} />
+              <AuthNavItem />
             </Nav>
           </Collapse>
         </Container>

@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { NavLink as RouterNavLink, Redirect } from 'react-router-dom';
 import { Button, Col, Form, FormGroup, Label, Input, Row } from 'reactstrap';
 import { Attendee, Event } from 'microsoft-graph';
-import withAuthProvider, { AuthComponentProps } from '../../common/with-auth-provider';
 import { createNewEvent, config  } from '../../../services/graph-service';
+import { AuthContext } from '../../../contexts/auth-context';
 
 interface NewEventState {
   subject: string;
@@ -15,7 +15,8 @@ interface NewEventState {
   redirect: boolean;
 }
 
-function NewEvent(props: AuthComponentProps) {
+export default function NewEvent() {
+  const {user, getAccessToken, setErrorMessage} = useContext(AuthContext);
   const [state, setState] = useState<NewEventState>({
     subject: '',
     attendees: '',
@@ -70,11 +71,11 @@ function NewEvent(props: AuthComponentProps) {
       // the start and end are set correctly
       start: {
         dateTime: state.start,
-        timeZone: props.user.timeZone
+        timeZone: user.timeZone
       },
       end: {
         dateTime: state.end,
-        timeZone: props.user.timeZone
+        timeZone: user.timeZone
       },
       // Only add if a body was given
       body: state.body.length > 0 ? {
@@ -85,7 +86,7 @@ function NewEvent(props: AuthComponentProps) {
 
     try {
       // Get the user's access token
-      const accessToken = await props.getAccessToken(config.scopes);
+      const accessToken = await getAccessToken(config.scopes);
 
       // Create the event
       await createNewEvent(accessToken, newEvent);
@@ -94,7 +95,7 @@ function NewEvent(props: AuthComponentProps) {
       setState(state => ({ ...state, redirect: true }));
     }
     catch (err) {
-      props.setError('ERROR', JSON.stringify(err));
+      setErrorMessage('ERROR', JSON.stringify(err));
     }
   }
 
@@ -159,5 +160,3 @@ function NewEvent(props: AuthComponentProps) {
     </Form>
   );
 }
-
-export default withAuthProvider(NewEvent);
