@@ -3,8 +3,6 @@ import { createContext, ReactNode, useCallback, useEffect, useMemo, useState } f
 import { getUserDetails } from "../services/graph-service";
 import { config } from "../services/graph-service";
 
-export const AuthContext = createContext<AuthContextValue | null>(null);
-
 interface AuthProviderState {
   error: any;
   isAuthenticated: boolean;
@@ -22,6 +20,7 @@ interface AuthProviderProps {
   children: ReactNode;
 }
 
+export const AuthContext = createContext<AuthContextValue | null>(null);
 export function AuthProvider({children}: AuthProviderProps) {
   const [auth, setAuth] = useState<AuthProviderState>({error: null, isAuthenticated: false, user: null})
     
