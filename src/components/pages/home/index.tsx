@@ -26,9 +26,9 @@ export default function Home() {
     return (
       <MainLayout>
         <Jumbotron>
-          <h1>React Graph Tutorial</h1>
+          <h1>MS Graph React</h1>
           <p className="lead">
-            This sample app shows how to use the Microsoft Graph API to access Outlook and OneDrive data from React
+            This sample app shows how to use the Microsoft Graph API to access Outlook and OneDrive data in React
           </p>
           <HomeContent />
         </Jumbotron>
