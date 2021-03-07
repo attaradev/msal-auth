@@ -18,7 +18,7 @@ export default function AuthNavItem() {
     return (
       <UncontrolledDropdown>
         <DropdownToggle nav caret>
-          <UserAvatar user={user} />
+          <UserAvatar />
         </DropdownToggle>
         <DropdownMenu right>
           <h5 className="dropdown-item-text mb-0">{user.displayName}</h5>

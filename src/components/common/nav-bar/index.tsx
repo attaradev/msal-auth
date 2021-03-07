@@ -11,8 +11,8 @@ import {
   NavLink,
 } from 'reactstrap';
 import AuthNavItem from '../auth-nav-item';
-import '@fortawesome/fontawesome-free/css/all.css';
 import { AuthContext } from '../../../contexts/auth-context';
+import '@fortawesome/fontawesome-free/css/all.css';
 
 interface NavBarState {
   isOpen: boolean;
@@ -28,28 +28,24 @@ export default function NavBar() {
     });
   }
 
-  // Only show calendar nav item if logged in
-  let calendarLink = null;
-  if (isAuthenticated) {
-    calendarLink = (
-      <NavItem>
-        <RouterNavLink to="/calendar" className="nav-link" exact>Calendar</RouterNavLink>
-      </NavItem>
-    );
-  }
-
   return (
     <div>
       <Navbar color="dark" dark expand="md" fixed="top">
         <Container>
-          <NavbarBrand href="/">React Graph Tutorial</NavbarBrand>
+          <NavbarBrand href="/">MS Graph React</NavbarBrand>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={state.isOpen} navbar>
             <Nav className="mr-auto" navbar>
               <NavItem>
                 <RouterNavLink to="/" className="nav-link" exact>Home</RouterNavLink>
               </NavItem>
-              {calendarLink}
+              {
+                isAuthenticated && (
+                  <NavItem>
+                    <RouterNavLink to="/calendar" className="nav-link" exact>Calendar</RouterNavLink>
+                  </NavItem>
+                )
+              }
             </Nav>
             <Nav className="justify-content-end" navbar>
               <NavItem>

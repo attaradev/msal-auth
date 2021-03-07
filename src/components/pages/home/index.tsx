@@ -4,6 +4,7 @@ import {
   Jumbotron
 } from 'reactstrap';
 import { AuthContext } from '../../../contexts/auth-context';
+import MainLayout from '../../layouts/main';
 
 function HomeContent() {
   const {user, login, isAuthenticated} = useContext(AuthContext);
@@ -23,12 +24,14 @@ function HomeContent() {
 
 export default function Home() {
     return (
-      <Jumbotron>
-        <h1>React Graph Tutorial</h1>
-        <p className="lead">
-          This sample app shows how to use the Microsoft Graph API to access Outlook and OneDrive data from React
-        </p>
-        <HomeContent />
-      </Jumbotron>
+      <MainLayout>
+        <Jumbotron>
+          <h1>React Graph Tutorial</h1>
+          <p className="lead">
+            This sample app shows how to use the Microsoft Graph API to access Outlook and OneDrive data from React
+          </p>
+          <HomeContent />
+        </Jumbotron>
+      </MainLayout>
     );
 }
