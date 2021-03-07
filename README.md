@@ -6,17 +6,17 @@ This sample app shows how to use the Microsoft Graph API to access Outlook and O
 
 ## Local Development
 
-Clone this repo
+Clone this repo, run:
 
-### `git clone https://github.com/mikeattara/msal-auth.git`
+    $ git clone https://github.com/mikeattara/msal-auth.git
 
-Navigate into the project directory
+Navigate into the project directory, run:
 
-### `cd msal-auth`
+    $ cd msal-auth
 
 In the project directory, you can run:
 
-### `npm start`
+    $ npm start
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
