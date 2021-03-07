@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+[![Netlify Status](https://api.netlify.com/api/v1/badges/84a1f678-18e5-49eb-bd7d-cca6e10d7150/deploy-status)](https://app.netlify.com/sites/zeelos/deploys)
+
+# MS Graph React
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
